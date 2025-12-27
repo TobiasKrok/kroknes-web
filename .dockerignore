@@ -50,8 +50,6 @@ docs
 
 # Kubernetes
 k8s
-*.yaml
-*.yml
 
 # Docker
 Dockerfile
