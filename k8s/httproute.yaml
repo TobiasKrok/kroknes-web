@@ -1,0 +1,23 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: kroknes-web
+  namespace: kroknes-dev
+spec:
+  parentRefs:
+    - name: kroknes-gw
+      group: gateway.networking.k8s.io
+      kind: Gateway
+      namespace: default
+      sectionName: web-gw-https
+  hostnames:
+    - "kroknes.dev"
+    - "www.kroknes.dev"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: kroknes-web-service
+          port: 80

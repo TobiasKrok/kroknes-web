@@ -1,64 +1,65 @@
-import Image from "next/image";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { Button } from "@/components/ui/button";
+import { LucideMail } from "lucide-react";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { SiKubernetes, SiRedhatopenshift } from "react-icons/si";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen">
+      <nav className="mx-auto py-5 px-4 pb-7 flex justify-between items-center">
+        <a
+          href="/"
+          className="underline decoration-primary text-secondary-foreground"
+        >
+          kroknes<span className="text-primary">.</span>dev
+        </a>
+        <ThemeToggle />
+      </nav>
+      {/* hero */}
+      <main className="mx-auto flex flex-col w-full justify-center items-center gap-9">
+        <section className=" container text-center lg:w-1/2 xl:w-1/2 md:w-1/2">
+          <h1 className="text-2xl mb-3">
+            <span className="block text-muted-foreground mb-3">Hello! I'm</span>
+            <span className="bg-linear-to-r from-emerald-700 to-emerald-500 text-transparent bg-clip-text font-extrabold">
+              Tobias Kroknes Kristiansen
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-muted-foreground">
+            I'm currently working as a Platform Engineer at Intility, mainly
+            dealing with{" "}
+            <span className="text-nowrap">
+              <SiKubernetes className="inline -mt-1 text-blue-600 " />{" "}
+              Kubernetes
+            </span>{" "}
+            and{" "}
+            <span className="text-nowrap">
+              <SiRedhatopenshift className="inline -mt-1 text-red-500" />{" "}
+              Openshift.{" "}
+            </span>
+            I like making things, so on this page you'll find any projects I
+            decide to make and write about.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        </section>
+        <section className="space-x-1 -mt-5">
+          <Button aria-label="linkedin" variant={"link"}>
+            <a href="https://www.linkedin.com/in/tobias-kroknes-kristiansen-727413140/">
+              <FaLinkedinIn />
+            </a>
+          </Button>
+
+          <Button aria-label="github" variant={"link"} className="text-2xl">
+            <a href="https://www.github.com/tobiaskrok">
+              <FaGithub />
+            </a>
+          </Button>
+          <Button aria-label="linkedin" variant={"link"} className="text-2xl">
+            <a href="mailto:tobiaskroknes@gmail.com">
+              <LucideMail />
+            </a>
+          </Button>
+        </section>
+        <section>More coming soon...</section>
       </main>
     </div>
   );

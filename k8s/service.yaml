@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kroknes-web-service
+  namespace: kroknes-dev
+  labels:
+    app: kroknes-web
+spec:
+  type: ClusterIP
+  selector:
+    app: kroknes-web
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 3000
