@@ -1,0 +1,10 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+    name: kroknes-dev
+    namespace: kroknes-psql
+spec:
+    name: kroknes_dev
+    owner: app
+    cluster:
+        name: postgres

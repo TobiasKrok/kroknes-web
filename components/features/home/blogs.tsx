@@ -7,6 +7,12 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { format } from 'date-fns'
+import {
+    Empty,
+    EmptyDescription,
+    EmptyHeader,
+    EmptyTitle,
+} from '@/components/ui/empty'
 export default async function Blogs() {
     try {
         const payload = await getPayload({ config })
@@ -22,7 +28,16 @@ export default async function Blogs() {
                 },
             },
         })
-
+        if (blogs.docs.length === 0) {
+            return (
+                <Empty>
+                    <EmptyHeader>
+                        <EmptyTitle>No posts yet!</EmptyTitle>
+                        <EmptyDescription>Check back later...</EmptyDescription>
+                    </EmptyHeader>
+                </Empty>
+            )
+        }
         return (
             <div className="mx-auto flex max-w-3xl flex-col gap-8 px-4">
                 {blogs.docs.map((blog) => {

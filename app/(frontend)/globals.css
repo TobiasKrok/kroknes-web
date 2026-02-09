@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
-
+@custom-variant dark (&:where(.dark, .dark *));
 body {
     background-color: var(--color-background);
     color: var(--color-foreground);

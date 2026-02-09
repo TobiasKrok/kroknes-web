@@ -66,7 +66,7 @@ export default function Home() {
                 className="mt-32 flex w-full flex-col items-center justify-center"
             >
                 <div className="mb-10 text-center">
-                    <h1 className="decoration-primary text-secondary-foreground text-xl font-semibold">
+                    <h1 className="text-primary text-xl font-semibold">
                         Posts
                     </h1>
                     <p className="text-muted-foreground mt-3">

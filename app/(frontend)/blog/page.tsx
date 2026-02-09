@@ -1,14 +1,5 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import Image from 'next/image'
-import Link from 'next/link'
-import {
-    Card,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card'
-import { Media } from '@/payload-types'
 import SearchableBlog from '@/components/features/blog/searchable-blog'
 
 export default async function BlogPage() {
@@ -22,7 +13,7 @@ export default async function BlogPage() {
     })
 
     return (
-        <main className="mx-auto h-full max-w-4xl px-4 py-12">
+        <div className="mx-auto w-full max-w-6xl px-4 py-12">
             <header className="text-center">
                 <h1 className="text-3xl font-bold md:text-4xl">Blog</h1>
                 <p className="text-muted-foreground mt-2">
@@ -37,6 +28,6 @@ export default async function BlogPage() {
                     No posts yet. Check back soon!
                 </p>
             )}
-        </main>
+        </div>
     )
 }

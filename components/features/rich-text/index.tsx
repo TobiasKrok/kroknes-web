@@ -37,6 +37,7 @@ type Props = {
     data: DefaultTypedEditorState
     enableGutter?: boolean
     enableProse?: boolean
+    enhancedImages?: boolean
 } & React.HTMLAttributes<HTMLDivElement>
 
 export default function RichText(props: Props) {
@@ -44,6 +45,7 @@ export default function RichText(props: Props) {
         className,
         enableProse = true,
         enableGutter = true,
+        enhancedImages = true, // this is so the images you put in the richtext itself looks a bit better. they dont come with rounded corners etc
         ...rest
     } = props
     return (
@@ -52,9 +54,10 @@ export default function RichText(props: Props) {
             className={cn(
                 'payload-richtext',
                 {
+                    '[&_img]:rounded-xl!': enhancedImages,
                     container: enableGutter,
                     'max-w-none': !enableGutter,
-                    'prose md:prose-md dark:prose-invert mx-auto': enableProse,
+                    'prose md:prose-md dark:prose-invert': enableProse,
                 },
                 className
             )}

@@ -15,14 +15,26 @@ spec:
             labels:
                 app: kroknes-web
         spec:
-            securityContext:
-                runAsNonRoot: true
-                runAsUser: 1001
-                fsGroup: 1001
             containers:
                 - name: kroknes-web
                   image: ghcr.io/tobiaskrok/kroknes-web:latest
+                  securityContext:
+                      readOnlyRootFilesystem: true
+                      runAsNonRoot: true
+                      runAsUser: 1001
+                      fsGroup: 1001
                   imagePullPolicy: Always
+                  env:
+                      - name: DATABASE_URL
+                        valueFrom:
+                            secretKeyRef:
+                                name: kroknes-dev-secrets
+                                key: database-url
+                      - name: PAYLOAD_SECRET
+                        valueFrom:
+                            secretKeyRef:
+                                name: kroknes-dev-secrets
+                                key: payload-secret
                   ports:
                       - containerPort: 3000
                         name: http

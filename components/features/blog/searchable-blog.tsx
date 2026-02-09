@@ -11,7 +11,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { PaginatedDocs } from 'payload'
 import { useState } from 'react'
-import { Input } from '@/components/ui/input'
 import { format } from 'date-fns'
 import {
     InputGroup,
@@ -53,7 +52,7 @@ export default function SearchableBlog(props: Props) {
                     )}
                 </InputGroup>
             </div>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2">
+            <div className="mt-12 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {filtered.map((blog) => {
                     const thumbnail = blog.thumbnail as Media
                     return (
