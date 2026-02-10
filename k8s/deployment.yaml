@@ -22,7 +22,6 @@ spec:
                       readOnlyRootFilesystem: true
                       runAsNonRoot: true
                       runAsUser: 1001
-                      fsGroup: 1001
                   imagePullPolicy: Always
                   env:
                       - name: DATABASE_URL
