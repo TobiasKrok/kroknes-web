@@ -1,4 +1,5 @@
 import sharp from 'sharp'
+import { s3Storage } from '@payloadcms/storage-s3'
 import { migrations } from './migrations'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { postgresAdapter } from '@payloadcms/db-postgres'
@@ -133,4 +134,18 @@ export default buildConfig({
     // This is optional - if you don't need to do these things,
     // you don't need it!
     sharp,
+    plugins: [
+        s3Storage({
+            collections: { media: true },
+            bucket: process.env.R2_BUCKET || '',
+            config: {
+                endpoint: process.env.R2_ENDPOINT, // https://<account-id>.r2.cloudflarestorage.com
+                region: 'auto',
+                credentials: {
+                    accessKeyId: process.env.R2_ACCESS_KEY_ID || '',
+                    secretAccessKey: process.env.R2_SECRET_ACCESS_KEY || '',
+                },
+            },
+        }),
+    ],
 })

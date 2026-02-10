@@ -24,6 +24,26 @@ spec:
                       runAsUser: 1001
                   imagePullPolicy: Always
                   env:
+                      - name: R2_BUCKET
+                        valueFrom:
+                            configMapRef:
+                                name: kroknes-dev-cm
+                                key: r2-bucket
+                      - name: R2_ENDPOINT
+                        valueFrom:
+                            configMapRef:
+                                name: kroknes-dev-cm
+                                key: r2-endpoint
+                      - name: R2_ACCESS_KEY_ID
+                        valueFrom:
+                            secretKeyRef:
+                                name: kroknes-dev-secrets
+                                key: r2-access-key-id
+                      - name: R2_ACCESS_KEY
+                        valueFrom:
+                            secretKeyRef:
+                                name: kroknes-dev-secrets
+                                key: r2-access-key
                       - name: DATABASE_URL
                         valueFrom:
                             secretKeyRef:
