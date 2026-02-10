@@ -1,4 +1,5 @@
 import sharp from 'sharp'
+import { migrations } from './migrations'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { buildConfig } from 'payload'
@@ -125,6 +126,7 @@ export default buildConfig({
         pool: {
             connectionString: process.env.DATABASE_URL || '',
         },
+        prodMigrations: migrations,
     }),
     // If you want to resize images, crop, set focal point, etc.
     // make sure to install it and pass it to the config.
