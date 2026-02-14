@@ -91,7 +91,7 @@ export default async function Blogs() {
             </div>
         )
     } catch (err: unknown) {
-        console.error(err)
+        console.log(err)
         return (
             <Alert className="max-w-md" variant={'destructive'}>
                 <AlertTitle>Failed to load posts</AlertTitle>
