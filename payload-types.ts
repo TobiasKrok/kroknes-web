@@ -153,7 +153,7 @@ export interface Blog {
         }
         [k: string]: unknown
     }
-    thumbnail: number | Media
+    thumbnail?: (number | null) | Media
     shortDescription: string
     minutesToRead?: number | null
     featured?: boolean | null

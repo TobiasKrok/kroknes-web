@@ -51,6 +51,9 @@ export default buildConfig({
                 {
                     name: 'thumbnail',
                     type: 'upload',
+                    admin: {
+                        condition: (data) => data.status === 'published',
+                    },
                     required: true,
                     relationTo: 'media',
                 },
