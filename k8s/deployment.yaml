@@ -39,7 +39,7 @@ spec:
                             secretKeyRef:
                                 name: kroknes-dev-secrets
                                 key: r2-access-key-id
-                      - name: R2_ACCESS_SECRET_KEY
+                      - name: R2_SECRET_ACCESS_KEY
                         valueFrom:
                             secretKeyRef:
                                 name: kroknes-dev-secrets
