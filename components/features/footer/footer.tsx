@@ -16,7 +16,7 @@ export default function Footer() {
                     <span className="decoration-primary text-secondary-foreground font-semibold underline">
                         kroknes<span className="text-primary">.</span>dev
                     </span>
-                    <p className="text-muted-foreground mt-4 text-wrap">
+                    <p className="text-muted-foreground mt-4 text-sm text-wrap">
                         © {currentYear} Tobias Kroknes Kristiansen.
                     </p>
                 </div>

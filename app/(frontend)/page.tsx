@@ -76,7 +76,7 @@ export default function Home() {
                 <Blogs />
                 <Link
                     href="/blog"
-                    className="text-secondary-foreground mt-10 flex items-center gap-1 text-lg font-medium"
+                    className="text-secondary-foreground mt-10 flex items-center gap-1 text-sm font-medium"
                 >
                     See all posts{' '}
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
