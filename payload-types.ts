@@ -440,6 +440,36 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CodeBlock".
+ */
+export interface CodeBlock {
+    filename?: string | null
+    language?:
+        | (
+              | 'typescript'
+              | 'tsx'
+              | 'javascript'
+              | 'jsx'
+              | 'css'
+              | 'html'
+              | 'dotenv'
+              | 'go'
+              | 'nginx'
+              | 'sh'
+              | 'json'
+              | 'yaml'
+              | 'text'
+              | 'toml'
+              | 'java'
+          )
+        | null
+    code: string
+    id?: string | null
+    blockName?: string | null
+    blockType: 'code'
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "auth".
  */
 export interface Auth {

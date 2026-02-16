@@ -1,14 +1,21 @@
 import sharp from 'sharp'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { migrations } from './migrations'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { lexicalEditor, BlocksFeature } from '@payloadcms/richtext-lexical'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { buildConfig } from 'payload'
+import { Code } from './components/features/rich-text/blocks/code/config'
 
 export default buildConfig({
-    // If you'd like to use Rich Text, pass your editor here
-    editor: lexicalEditor(),
-    // Define and configure your collections in this array
+    editor: lexicalEditor({
+        features: ({ defaultFeatures, rootFeatures }) => [
+            ...defaultFeatures,
+            ...rootFeatures,
+            BlocksFeature({
+                blocks: [Code],
+            }),
+        ],
+    }),
     collections: [
         {
             slug: 'blog',

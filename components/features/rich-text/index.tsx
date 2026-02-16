@@ -9,9 +9,11 @@ import {
     JSXConvertersFunction,
     LinkJSXConverter,
     RichText as ConvertRichText,
+    JSXConverter,
 } from '@payloadcms/richtext-lexical/react'
+import CodeBlock, { CodeBlockProps } from './blocks/code/component.server'
 
-type NodeTypes = DefaultNodeTypes
+type NodeTypes = DefaultNodeTypes | SerializedBlockNode<CodeBlockProps>
 // | SerializedBlockNode<CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps>
 
 // COPIED FROM https://github.com/payloadcms/payload/blob/main/templates/website/src/components/RichText/index.tsx
@@ -31,6 +33,12 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
 }) => ({
     ...defaultConverters,
     ...LinkJSXConverter({ internalDocToHref }),
+    blocks: {
+        code: ({ node }: { node: SerializedBlockNode<CodeBlockProps> }) => {
+            console.log(node)
+            return <CodeBlock {...node.fields} />
+        },
+    },
 })
 
 type Props = {
@@ -48,6 +56,7 @@ export default function RichText(props: Props) {
         enhancedImages = true, // this is so the images you put in the richtext itself looks a bit better. they dont come with rounded corners etc
         ...rest
     } = props
+    console.log(JSON.stringify(props.data, null, 2))
     return (
         <ConvertRichText
             converters={jsxConverters}
@@ -57,7 +66,8 @@ export default function RichText(props: Props) {
                     '[&_img]:rounded-xl!': enhancedImages,
                     container: enableGutter,
                     'max-w-none': !enableGutter,
-                    'prose md:prose-md dark:prose-invert': enableProse,
+                    'prose-code:before:content-none prose-code:after:content-none prose lg:prose-lg md:prose-md dark:prose-invert max-w-none':
+                        enableProse,
                 },
                 className
             )}

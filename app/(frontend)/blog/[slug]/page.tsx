@@ -29,21 +29,23 @@ export default async function Page({
     const [blog] = blogs.docs // should always be one
     const thumbnail = blog.thumbnail as Media
     return (
-        <main className="bg-muted/40 border-muted mx-auto max-w-6xl rounded-xl border-2 p-8">
+        <main className="bg-muted/40 border-muted mx-auto w-full max-w-7xl rounded-xl border-2 p-8">
             <Link
                 href="/blog"
-                className="text-muted-foreground hover:text-primary inline-flex items-center gap-1 text-lg"
+                className="text-muted-foreground hover:text-primary md:text-md inline-flex items-center gap-1 lg:text-lg"
             >
-                <ArrowLeft className="h-5 w-5" />
-                Back to blog
+                <ArrowLeft className="h-3 w-5" />
+                Back to overview
             </Link>
             <header className="prose dark:prose-invert mt-8">
-                <h1 className="text-4xl leading-1 font-bold">{blog.title}</h1>
-                <p className="text-primary/80 mt-2 font-mono text-sm">
+                <h1 className="text-4xl leading-2 font-bold tracking-wider">
+                    {blog.title}
+                </h1>
+                <p className="text-primary/80 lg:text-md mt-2 font-mono text-base">
                     {format(new Date(blog.createdAt), 'd MMM, yyyy')} &#8226;{' '}
                     {blog.minutesToRead} min read
                 </p>
-                <p className="text-muted-foreground border-primary/30 mt-4 border-l-2 pl-4 text-lg italic">
+                <p className="text-muted-foreground border-primary/30 mt-4 border-l-2 pl-4 text-base italic lg:text-lg">
                     {blog.shortDescription}
                 </p>
             </header>
