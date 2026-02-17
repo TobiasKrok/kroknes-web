@@ -50,7 +50,7 @@ export default async function Page({
                 </p>
             </header>
 
-            <div className="relative mt-8 aspect-video overflow-hidden sm:mx-0">
+            <div className="relative mt-8 overflow-hidden sm:mx-0">
                 {thumbnail.url ? (
                     <Image
                         src={(blog.thumbnail as Media).url || ''}
