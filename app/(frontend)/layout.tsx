@@ -4,6 +4,8 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme/theme-provider'
 import Header from '@/components/features/header/header'
 import Footer from '@/components/features/footer/footer'
+import { TooltipProvider } from '@/components/ui/tooltip'
+import { Toaster } from '@/components/ui/sonner'
 const geistSans = Geist({
     variable: '--font-geist-sans',
     subsets: ['latin'],
@@ -39,9 +41,13 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <Header />
-                    {children}
-                    <Footer />
+                    <TooltipProvider>
+                        <Header />
+                        {children}
+                        <Footer />
+                    </TooltipProvider>
+
+                    <Toaster />
                 </ThemeProvider>
             </body>
         </html>
