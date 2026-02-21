@@ -66,7 +66,7 @@ export default function RichText(props: Props) {
                     '[&_img]:rounded-xl!': enhancedImages,
                     container: enableGutter,
                     'max-w-none': !enableGutter,
-                    'prose-code:before:content-none prose-code:after:content-none prose lg:prose-lg md:prose-md dark:prose-invert max-w-none':
+                    'prose-code:before:content-none prose-code:after:content-none prose-code:text-sm prose lg:prose-lg md:prose-md dark:prose-invert max-w-none':
                         enableProse,
                 },
                 className
