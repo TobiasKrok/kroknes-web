@@ -56,7 +56,6 @@ export default function RichText(props: Props) {
         enhancedImages = true, // this is so the images you put in the richtext itself looks a bit better. they dont come with rounded corners etc
         ...rest
     } = props
-    console.log(JSON.stringify(props.data, null, 2))
     return (
         <ConvertRichText
             converters={jsxConverters}

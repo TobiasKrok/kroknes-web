@@ -55,8 +55,8 @@ export default async function Page({
                     <Image
                         src={(blog.thumbnail as Media).url || ''}
                         alt={(blog.thumbnail as Media).alt || 'Blog thumbnail'}
-                        width={800}
-                        height={450}
+                        width={700}
+                        height={350}
                         className="rounded-xl object-cover object-top"
                     />
                 ) : (
