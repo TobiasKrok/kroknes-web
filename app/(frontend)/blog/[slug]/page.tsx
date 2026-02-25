@@ -3,11 +3,10 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowLeft, ArrowRight, ImageOff } from 'lucide-react'
-import { format, formatDate } from 'date-fns/format'
+import { ArrowLeft, ImageOff } from 'lucide-react'
+import { format } from 'date-fns/format'
 import { Media } from '@/payload-types'
 import RichText from '@/components/features/rich-text'
-import { Empty, EmptyTitle } from '@/components/ui/empty'
 import { notFound } from 'next/navigation'
 export default async function Page({
     params,
@@ -29,7 +28,7 @@ export default async function Page({
     const [blog] = blogs.docs // should always be one
     const thumbnail = blog.thumbnail as Media
     return (
-        <main className="bg-muted/40 border-muted mx-auto w-full max-w-7xl rounded-xl border-2 p-8">
+        <main className="bg-muted/40 border-muted mx-auto w-full max-w-5xl overflow-hidden rounded-xl border-2 p-4 lg:max-w-7xl lg:p-8">
             <Link
                 href="/blog"
                 className="text-muted-foreground hover:text-primary md:text-md inline-flex items-center gap-1 lg:text-lg"
@@ -37,11 +36,11 @@ export default async function Page({
                 <ArrowLeft className="h-3 w-5" />
                 Back to overview
             </Link>
-            <header className="prose dark:prose-invert mt-8">
-                <h1 className="text-4xl leading-2 font-bold tracking-wider">
+            <header className="mt-8">
+                <h1 className="text-3xl leading-2 font-bold tracking-wider lg:text-4xl">
                     {blog.title}
                 </h1>
-                <p className="text-primary/80 lg:text-md mt-2 font-mono text-base">
+                <p className="text-primary/80 lg:text-md mt-5 font-mono text-sm">
                     {format(new Date(blog.createdAt), 'd MMM, yyyy')} &#8226;{' '}
                     {blog.minutesToRead} min read
                 </p>
@@ -50,20 +49,17 @@ export default async function Page({
                 </p>
             </header>
 
-            <div className="relative mt-8 overflow-hidden sm:mx-0">
-                {thumbnail.url ? (
-                    <Image
-                        src={(blog.thumbnail as Media).url || ''}
-                        alt={(blog.thumbnail as Media).alt || 'Blog thumbnail'}
-                        width={700}
-                        height={350}
-                        className="rounded-xl object-cover object-top"
-                    />
-                ) : (
-                    <div className="bg-muted flex h-full w-full items-center justify-center">
-                        <ImageOff className="text-muted-foreground h-12 w-12" />
+            <div className="relative mt-8 sm:mx-0">
+                {thumbnail?.url ? (
+                    <div className="relative mt-8 aspect-video max-h-80 overflow-hidden rounded-xl lg:max-h-96">
+                        <Image
+                            src={thumbnail.url}
+                            alt={thumbnail.alt || 'Blog thumbnail'}
+                            className="object-cover object-top"
+                            fill
+                        />
                     </div>
-                )}
+                ) : null}
             </div>
             <article className="mt-8">
                 <RichText data={blog.content} enableProse />

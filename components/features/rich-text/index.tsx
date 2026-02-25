@@ -52,7 +52,6 @@ export default function RichText(props: Props) {
     const {
         className,
         enableProse = true,
-        enableGutter = true,
         enhancedImages = true, // this is so the images you put in the richtext itself looks a bit better. they dont come with rounded corners etc
         ...rest
     } = props
@@ -61,11 +60,10 @@ export default function RichText(props: Props) {
             converters={jsxConverters}
             className={cn(
                 'payload-richtext',
+                'max-w-none',
                 {
                     '[&_img]:rounded-xl!': enhancedImages,
-                    container: enableGutter,
-                    'max-w-none': !enableGutter,
-                    'prose-code:before:content-none prose-code:after:content-none prose-code:text-sm prose lg:prose-lg md:prose-md dark:prose-invert max-w-none':
+                    'prose-code:before:content-none prose-code:after:content-none prose-code:text-sm prose lg:prose-lg md:prose-md dark:prose-invert':
                         enableProse,
                 },
                 className

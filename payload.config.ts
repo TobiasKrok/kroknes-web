@@ -146,6 +146,7 @@ export default buildConfig({
     sharp,
     plugins: [
         s3Storage({
+            enabled: process.env.ENVIRONMENT !== 'dev',
             collections: { media: true },
             bucket: process.env.R2_BUCKET || '',
             config: {
