@@ -1,4 +1,5 @@
 import { ThemeToggle } from '@/components/theme/theme-toggle'
+import Link from 'next/link'
 
 export default function Header() {
     return (
@@ -10,7 +11,15 @@ export default function Header() {
                 >
                     kroknes<span className="text-primary">.</span>dev
                 </a>
-                <ThemeToggle />
+                <div className="flex items-center gap-5">
+                    <Link
+                        className="hover:text-primary underline"
+                        href={'/blog'}
+                    >
+                        blog
+                    </Link>
+                    <ThemeToggle />
+                </div>
             </nav>
         </header>
     )

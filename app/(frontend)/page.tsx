@@ -1,6 +1,5 @@
 import Blogs from '@/components/features/home/blogs'
 import { NodeNetwork } from '@/components/features/home/net-animation'
-import { ThemeToggle } from '@/components/theme/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, LucideMail } from 'lucide-react'
 import Link from 'next/link'
@@ -63,7 +62,7 @@ export default function Home() {
 
             <section
                 id="posts"
-                className="mt-32 flex w-full flex-col items-center justify-center"
+                className="mt-34 flex w-full flex-col items-center justify-center lg:mt-24"
             >
                 <div className="mb-10 text-center">
                     <h1 className="text-primary text-xl font-semibold">
