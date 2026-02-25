@@ -55,7 +55,7 @@ export default async function Page({
                         <Image
                             src={thumbnail.url}
                             alt={thumbnail.alt || 'Blog thumbnail'}
-                            className="object-cover object-top"
+                            className="object-contain"
                             fill
                         />
                     </div>
