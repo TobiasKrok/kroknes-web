@@ -51,15 +51,10 @@ export default async function Blogs() {
 
                         <div className="relative aspect-video w-full shrink-0 overflow-hidden md:aspect-4/3 md:w-72">
                             <Image
-                                sizes="(max-width: 768px) 100vw, 288px"
-                                src={
-                                    thumbnail.sizes?.thumbnail?.url ||
-                                    thumbnail.url ||
-                                    ''
-                                }
+                                src={thumbnail.url || ''}
                                 alt={thumbnail.alt || 'Blog thumbnail'}
                                 fill
-                                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                className="object-contain transition-transform duration-300 group-hover:scale-105"
                             />
                         </div>
 
